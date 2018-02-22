@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>users
+	</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'users/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<h1>~ users ~</h1>
+		<br>
+		<table>
+			<tr>
+				<th>id</th>
+				<th>full name</th>
+				<th>email</th>
+				<th>created at</th>
+				<th>actions</th>
+			</tr>
+			{% for user in users %}
+			<tr>
+				<td>{{user.id}}</td>
+				<td><a href="{{user.id}}">{{user.first_name}} {{user.last_name}}</a></td>
+				<td>{{user.email}}</td>
+				<td>{{user.created_at|date:'Y-m-d'}}</td>
+				<td><a href="{{user.id}}">show</a> <a href="{{user.id}}/edit">edit</a> <a href="{{user.id}}/destroy">delete</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<h3><a href="new">add a new user</a></h3>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>user</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="top">
+			<a href="/belt_review/books/">home</a>
+			<a href="/belt_review/books/add/">add book and review</a>
+			<a href="/belt_review/logout/">logout</a>
+		</div>
+		<div id="left">
+			<h1>user alias ~  {{reviews.0.reviewer.alias}}</h1>
+			<h1>name ~ {{reviews.0.reviewer.name}}</h1>
+			<h1>email ~ {{reviews.0.reviewer.email}}</h1>
+			<h1>total reviews ~ {{length}}</h1>
+			<h1> ~ ~ ~ </h1>
+			<h1>reviewed books</h1>
+
+
+			{% for item in list %}
+
+					<h3><a href="/belt_review/books/{{item.id}}/">{{item.title}}</h3></a>	
+		
+			{% endfor %}
+
+
+
+		</div>
+
+		<div id="right">
+
+		</div>
+	</div>
+</body>
+</html>
+

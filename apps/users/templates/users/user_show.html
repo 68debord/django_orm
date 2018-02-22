@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>users
+	</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'users/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+			<h1>user: {{user.id}}</h1>
+			<h3>full name: {{user.first_name}} {{user.last_name}}</h3>
+			<h3>email: {{user.email}}</h3>
+			<h3>created at: {{user.created_at|date:'Y-m-d'}}</h3>
+			<br>
+			<h3><a href="edit">edit</a></h3>
+			<h3><a href="destroy">delete</td></h3>
+			<h3><a href="/users/">return home</a></h3>
+	</div>
+</body>
+</html>
+

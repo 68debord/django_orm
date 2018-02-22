@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>books</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="top">
+			<!-- need to add these links yo -->
+			<h2 style="margin-right: 300px; display: inline-block;">welcome, {{request.session.alias}}</h2>
+			<a href="/belt_review/books/add/">add book and review</a>
+			<a href="/belt_review/logout/">logout</a>
+		</div>
+
+
+		<div id="left">
+		<h3>recent book reviews</h3>	
+		{% for review in reviews %}	
+		{% if forloop.counter < 4 %}
+		<h3><a href="{{review.book.id}}/">{{review.book.title}}</h3></a>
+		<p>rating: {{review.rating}}</p>
+		<a href="/belt_review/users/{{review.reviewer.id}}/">{{review.reviewer.alias}}</a> says: <i>{{review.text}}</i>
+		<p>posted on {{review.created_at|date:'Y-m-d'}}</p>
+		{% endif %}
+		{% endfor %}
+		</div>
+		
+		<div id="right">
+			<h3>other books with reviews</h3>
+			<div id="box">
+			{% for book in books %}
+			{% if book.title not in list %}
+			<h3><a href="{{book.id}}/">{{book.title}}</h3></a>
+			{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+			
+	
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>book</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="top">
+
+			<a href="/belt_review/books/">home</a>
+			<a href="/belt_review/logout/">logout</a>
+		</div>
+		<div id="left">
+			<h1>{{reviews.0.book.title}}</h1>
+			<h3>Author: {{reviews.0.book.author.name}}</h3>
+			<h1>reviews</h1>
+			{% for review in reviews %}
+			<div id="review">
+				<p>rating: {{review.rating}}</p>
+				<a href="/belt_review/users/{{review.reviewer.id}}/">{{review.reviewer.alias}}</a> says: <i>{{review.text}}</i>
+				<p>posted on {{review.created_at|date:'Y-m-d'}}</p>
+				{% if request.session.id == review.reviewer.id %}
+				<a href="/belt_review/review/{{review.id}}/delete">delete</a>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+
+		<div id="right">
+			<h1>add review</h1>
+			<form action='process/' method='POST' id='reviewform'>{% csrf_token %}
+			<p><label for='text'>review</label><textarea name='text' rows='10' cols='20'></textarea></p>
+			<p><label for='rating'>stars</label><select name='rating' form='reviewform'>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select></p>
+			<p><input class='submit' type='submit' value='~add review~'></p>
+
+		</div>
+
+	</div>
+</body>
+</html>
+

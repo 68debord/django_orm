@@ -1,0 +1,81 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+*{
+    margin: auto;
+    padding: 0px;
+}
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+
+a{
+	color: rgb(99,178,118);
+}
+
+
+#wrapper{
+	width: 820px;
+	/*padding: 10px;*/
+	height: auto;
+	background-color: pink;
+	padding:50px
+	margin: auto;
+}
+
+#top{
+	width:auto;
+	height: 50px;
+	text-align: right;
+}
+
+#top h3{
+	display: inline-block;
+	text-align: left;
+}
+#right{
+	width: 400px;
+	display:inline-block;
+	vertical-align: top;
+	margin-bottom: 100px;
+}
+
+#left{
+	width: 400px;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 100px;
+}
+
+#box{
+	width:200px;
+	height: 100px;
+	overflow: auto;
+}
+
+#review{
+	border-top: 2px solid black;
+}
+form  { display: table;  }
+form p{ display: table-row;  }
+label { display: table-cell; text-align: right; }
+input { display: table-cell;}
+select {display: table-cell;}
+textarea {display:table-cell;}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}

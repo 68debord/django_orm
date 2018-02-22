@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>courses</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'courses/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		{% if messages %}
+		<ul class="messages">
+    		{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    		{% endfor %}
+		</ul>
+		{% endif %}
+
+		<h1>add a new course</h1>
+		<form action='/courses/create/' method='POST'>
+		{% csrf_token %}
+			<p><label for='name'>name</label></p><input type='text' name='name' id='name'></p>
+			<p><label for='desc'>description</label></p><textarea name='desc' rows='5' cols='25'></textarea>
+			<p><input class='submit' type='submit' value='~ ~ ~'></p>
+		</form>
+
+		<h1>courses</h1>
+		<table>
+			<tr>
+				<th>course name</th>
+				<th>description</th>
+				<th>date added</th>
+				<th>actions</th>
+			</tr>
+			{% for course in courses %}
+			<tr>
+				<td>{{course.name}}</td>
+				<td>{{course.desc.desc}}</td>
+				<td>{{course.created_at|date:'Y-m-d'}}</td>
+				<td><a href="destroy/{{course.id}}/">remove</a></td>
+			</tr>
+			{% endfor %}
+
+	</div>
+</body>
+</html>
+

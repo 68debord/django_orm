@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>add book and review</title>
+	{% load static %}
+<!-- 	update ourApp below -->
+	<link rel="stylesheet" type="text/css" href="{% static 'belt_review/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<div id="top">
+			<a href="/belt_review/books/">home</a>
+			<a href="/belt_review/logout/">logout</a>
+		</div>
+		<h1>add a new book and a review</h1>
+		<form action='process/' method='POST' id="reviewform">{% csrf_token %}
+			<p><label for='title'>title</label><input type='text' name='title'></p>
+			<p><label for='author'>choose from the list</label><select name='author' form='reviewform'>
+				{% for author in authors %}
+				<option value="{{author.name}}">{{author.name}}</option>
+				{% endfor %}
+			</select></p>	
+			<p><label for='newauthor'>or add a new author</label><input type='text' name='newauthor'></p>
+			<p><label for='text'>review</label><textarea name='text' rows='10' cols='20'></textarea></p>
+			<p><label for='rating'>stars</label><select name='rating' form='reviewform'>
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			</select></p>
+			<p><input class='submit' type='submit' value='~add book and review~'></p>
+		</form>
+	</div>
+</body>
+</html>
+
